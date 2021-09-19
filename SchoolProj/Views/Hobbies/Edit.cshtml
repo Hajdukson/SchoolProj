@@ -1,0 +1,46 @@
+﻿@model SchoolProj.Models.Hobby
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+
+@{
+    ViewData["Title"] = localizer["Title"];
+}
+
+<h1>@localizer["Edit"]</h1>
+
+<h4>Hobby</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="HobbyType" class="control-label"></label>
+                <select asp-for="HobbyType" class="form-control" asp-items="@Html.GetEnumSelectList<HobbyType>()">
+                </select>
+                <span asp-validation-for="HobbyType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TimeSpend" class="control-label"></label>
+                <input asp-for="TimeSpend" class="form-control"/>
+                <span asp-validation-for="TimeSpend" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Details" class="control-label"></label>
+                <input asp-for="Details" class="form-control" />
+                <span asp-validation-for="Details" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <input type="submit" value="@localizer["Save"]" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">@localizer["BackToList"]</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

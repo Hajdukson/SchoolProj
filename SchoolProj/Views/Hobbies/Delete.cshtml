@@ -1,0 +1,40 @@
+﻿@model SchoolProj.Models.Hobby
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+
+@{
+    ViewData["Title"] = localizer["Delete"];
+}
+
+<h1>@localizer["Delete"]</h1>
+
+<h3>@localizer["Submit"]</h3>
+<div>
+    <h4>Hobby</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.HobbyType)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.HobbyType)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TimeSpend)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TimeSpend)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Details)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Details)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="@localizer["Delete"]" class="btn btn-danger" /> |
+        <a asp-action="Index">@localizer["BackToList"]</a>
+    </form>
+</div>

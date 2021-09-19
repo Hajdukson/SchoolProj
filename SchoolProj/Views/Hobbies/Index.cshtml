@@ -1,0 +1,66 @@
+﻿@model SchoolProj.Models.HobbyViewModel
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+
+
+@{
+    ViewData["Title"] = @localizer["Title"];
+}
+
+<br />
+
+<h1>@localizer["Title"]</h1>
+
+<br />
+
+<div class="container row">
+    <form asp-controller="Hobbies" asp-action="Index" method="post" class="col-9">
+        <p>
+            @localizer["SearchDetails"]: <input name="searchString" type="text" />
+            <select asp-for="SelectedItem" asp-items="Model.ItemsToSelect">
+                <option selected>All</option>
+            </select>
+            <input class="btn btn-success" type="submit" value="@localizer["Filter"]" />
+        </p>
+    </form>
+    <a asp-action="Create" class="btn btn-info form-control col-3">@localizer["CreateHobby"]</a>
+</div>
+
+<br />
+
+<table class="table border">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ListOfEntities[0].HobbyType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ListOfEntities[0].TimeSpend)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ListOfEntities[0].Details)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.ListOfEntities)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HobbyType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TimeSpend)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Details)
+                </td>
+                <td>
+                    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.Id">@localizer["Edit"]</a>
+                    <a class="btn btn-info" asp-action="Details" asp-route-id="@item.Id">@localizer["Details"]</a>
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">@localizer["Delete"]</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
