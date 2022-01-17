@@ -7,12 +7,7 @@ It's a simply website created with ASP .Net Core MVC.
 - Users can create, read, update and delete items from database
 - The application is localized in English and Polish languages
 
-# Futuer updates
-
-- Implement JavaScript API for delete buttons
-- Implement Entity Repository pattern
-
-# Isues
+# Issues
 
 Isue with localization of the ErrorMessage in the ClassicMovieAttribute class:
 
